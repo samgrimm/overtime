@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 describe 'navigate' do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:post) { FactoryGirl.create(:post, user_id: user.id) }
   describe 'index' do
     before do
-      @user = FactoryGirl.create(:user)
-      login_as(@user, :scope => :user)
+      login_as(user, :scope => :user)
     end
     it 'can be reached successfully' do
       visit posts_path
@@ -17,16 +18,16 @@ describe 'navigate' do
     end
 
     it 'has a list of Posts' do
-      post1 = FactoryGirl.create(:post, user_id: @user.id)
-      post2 = FactoryGirl.create(:second_post, user_id: @user.id)
+      post1 = FactoryGirl.create(:post, user_id: user.id)
+      post2 = FactoryGirl.create(:second_post, user_id: user.id)
       visit posts_path
       expect(page).to have_content(/Some Rationale|Some more content/)
     end
 
     it "has a scope so that only post creators can see their posts" do
       other_user = FactoryGirl.create(:non_auth_user)
-      post1 = FactoryGirl.create(:post, user_id: @user.id)
-      post2 = FactoryGirl.create(:second_post, user_id: @user.id)
+      post1 = FactoryGirl.create(:post, user_id: user.id)
+      post2 = FactoryGirl.create(:second_post, user_id: user.id)
       post_from_other_user = FactoryGirl.create(:post_from_other_user, user_id: other_user.id)
       visit posts_path
       expect(page).to have_content(/Some Rationale|Some more content/)
@@ -45,8 +46,8 @@ describe 'navigate' do
   describe "delete" do
     before do
       @user = FactoryGirl.create(:user)
+      @post = FactoryGirl.create(:post, user_id: @user.id)
       login_as(@user, :scope => :user)
-      @post = FactoryGirl.create(:post , user_id: @user.id)
     end
     it "can be deleted" do
       visit posts_path
@@ -57,7 +58,6 @@ describe 'navigate' do
 
   describe "creation" do
     before do
-      user = FactoryGirl.create(:user)
       login_as(user, :scope => :user)
       visit new_post_path
     end
@@ -83,8 +83,8 @@ describe 'navigate' do
   describe "edit" do
     before do
       @user = FactoryGirl.create(:user)
-      login_as(@user, :scope => :user)
       @post = FactoryGirl.create(:post, user_id: @user.id)
+      login_as(@user, :scope => :user)
     end
     it "can be reached by clicking edit on the index page" do
       visit posts_path

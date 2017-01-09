@@ -12,5 +12,10 @@
     <%= f.label :rationale%>
     <%= f.text_area :rationale, class:"form-control" %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :status%>
+    <%= f.collection_radio_buttons :status, Post.statuses, :first, :first, class:"form-control" %>
+  </div>
   <%= f.submit 'Save', class:"btn btn-primary btn-block" %>
 <% end %>

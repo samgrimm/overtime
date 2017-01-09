@@ -64,3 +64,4 @@ gem "gritter"
 
 gem "administrate"
 gem "bourbon"
+gem "pundit"

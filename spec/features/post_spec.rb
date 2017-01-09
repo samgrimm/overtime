@@ -17,10 +17,20 @@ describe 'navigate' do
     end
 
     it 'has a list of Posts' do
-      post1 = FactoryGirl.create(:post)
-      post2 = FactoryGirl.create(:second_post)
+      post1 = FactoryGirl.create(:post, user_id: @user.id)
+      post2 = FactoryGirl.create(:second_post, user_id: @user.id)
       visit posts_path
       expect(page).to have_content(/Some Rationale|Some more content/)
+    end
+
+    it "has a scope so that only post creators can see their posts" do
+      other_user = FactoryGirl.create(:non_auth_user)
+      post1 = FactoryGirl.create(:post, user_id: @user.id)
+      post2 = FactoryGirl.create(:second_post, user_id: @user.id)
+      post_from_other_user = FactoryGirl.create(:post_from_other_user, user_id: other_user.id)
+      visit posts_path
+      expect(page).to have_content(/Some Rationale|Some more content/)
+      expect(page).not_to have_content(/And Some more content/)
     end
     describe "new" do
       it "has a link from the homepage" do
@@ -32,13 +42,11 @@ describe 'navigate' do
     end
   end
 
-
-
   describe "delete" do
     before do
       @user = FactoryGirl.create(:user)
       login_as(@user, :scope => :user)
-      @post = FactoryGirl.create(:post)
+      @post = FactoryGirl.create(:post , user_id: @user.id)
     end
     it "can be deleted" do
       visit posts_path

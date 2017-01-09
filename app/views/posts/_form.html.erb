@@ -13,9 +13,7 @@
     <%= f.text_area :rationale, class:"form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :status%>
-    <%= f.collection_radio_buttons :status, Post.statuses, :first, :first, class:"form-control" %>
-  </div>
+  <%= render partial: 'status', locals: { f: f } if current_user.type == 'AdminUser' %>
+  
   <%= f.submit 'Save', class:"btn btn-primary btn-block" %>
 <% end %>

@@ -8,7 +8,8 @@ describe "navigate" do
 
   describe "edit" do
     before do
-      @post = FactoryGirl.create(:post)
+      @user = FactoryGirl.create(:user)
+      @post = FactoryGirl.create(:post, user_id: @user.id)
       visit edit_post_path(@post)
     end
     it "has a status that can be edited on the form by an admin" do
@@ -19,7 +20,6 @@ describe "navigate" do
 
     it "cannot be edited by a regular user" do
       logout(:admin)
-      @user = FactoryGirl.create(:user)
       login_as(@user, :scope => :user)
       visit edit_post_path(@post)
       expect(page).to_not have_content('approved')

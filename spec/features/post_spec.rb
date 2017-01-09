@@ -5,7 +5,6 @@ describe 'navigate' do
     before do
       @user = FactoryGirl.create(:user)
       login_as(@user, :scope => :user)
-
     end
     it 'can be reached successfully' do
       visit posts_path
@@ -23,15 +22,17 @@ describe 'navigate' do
       visit posts_path
       expect(page).to have_content(/Some Rationale|Some more content/)
     end
-  end
-
-  describe "new" do
-    it "has a link from the homepage" do
-      visit root_path
-      click_link "new_post_from_nav"
-      expect(page.status_code).to eq(200)
+    describe "new" do
+      it "has a link from the homepage" do
+        visit root_path
+        expect(page).to have_content('Add New Entry')
+        click_link "new_post_from_nav"
+        expect(page.status_code).to eq(200)
+      end
     end
   end
+
+
 
   describe "delete" do
     before do
@@ -75,7 +76,7 @@ describe 'navigate' do
     before do
       @user = FactoryGirl.create(:user)
       login_as(@user, :scope => :user)
-      @post = FactoryGirl.create(:post)
+      @post = FactoryGirl.create(:post, user_id: @user.id)
     end
     it "can be reached by clicking edit on the index page" do
       visit posts_path
@@ -88,6 +89,14 @@ describe 'navigate' do
       fill_in 'post[rationale]', with: "Edited rationale"
       click_on "Save"
       expect(page).to have_content("Edited rationale")
+    end
+
+    it "cannot be edited by an unauthorized user" do
+      logout(:user)
+      non_auth_user = FactoryGirl.create(:non_auth_user)
+      login_as(non_auth_user, :scope => :user)
+      visit edit_post_path(@post)
+      expect(current_path).to eq(root_path)
     end
   end
 end

@@ -1,6 +1,8 @@
 <div class="logo">
   <h1>Timetracker</h1>
 </div>
+
+<% if current_user %>
 <ul class="custom-nav nav nav-pills">
   <li class="nav-item <%= active?(root_path)%>">
     <%= link_to "Home", root_path , class:"nav-link" %>
@@ -14,9 +16,11 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
     <div class="dropdown-menu">
-      <%= link_to "TODO: Admin Dashboard", root_path, class:"dropdown-item" %>
+      <%= link_to "Admin Dashboard", admin_root_path, class:"dropdown-item" if current_user.try(:type) == 'AdminUser'%>
       <%= link_to "Logout", destroy_user_session_path , class:"dropdown-item", method: :delete %>
     </div>
   </li>
 
 </ul>
+
+<% end %>

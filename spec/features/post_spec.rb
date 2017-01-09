@@ -33,6 +33,19 @@ describe 'navigate' do
     end
   end
 
+  describe "delete" do
+    before do
+      @user = FactoryGirl.create(:user)
+      login_as(@user, :scope => :user)
+      @post = FactoryGirl.create(:post)
+    end
+    it "can be deleted" do
+      visit posts_path
+      click_link "delete_#{@post.id}"
+      expect(page.status_code).to eq(200)
+    end
+  end
+
   describe "creation" do
     before do
       user = FactoryGirl.create(:user)

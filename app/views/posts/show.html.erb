@@ -1,5 +1,19 @@
-<h1>Post</h1>
-<p>
+<div class="">
+  <h2><%= @post.rationale %></h2>
+</div>
+<div class="card">
+  <div class="">
+    <h4> <span>Employee: <%= @post.user.full_name %> </span></h4>
+  </div>
+  <div class="">
+    <h4> <span>Overtime Amount Requested: <%= @post.overtime_request %> </span></h4>
+  </div>
+  <div class="">
+    <h4> <span>Date: <%= @post.date %> </span></h4>
+  </div>
+  <div class="">
+    <h4> <span>Current Stage of Approval: <%= @post.status.titleize %> </span></h4>
+  </div>
+</div>
 
-<%= @post.date %> - <%= @post.rationale %> - <%= @post.status %> 
-</p>
+<%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" if policy(@post).update?%>

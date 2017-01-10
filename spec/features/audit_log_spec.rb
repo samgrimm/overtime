@@ -16,5 +16,12 @@ describe 'AuditLog Feature' do
       visit audit_logs_path
       expect(page).to have_content("SNOW, JON")
     end
+    it "cannot be acccessed by non-admin users" do
+      logout(:admin)
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+      visit audit_logs_path
+      expect(current_path).to eq(root_path)
+    end
   end
 end

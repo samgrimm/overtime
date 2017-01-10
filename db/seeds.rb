@@ -1,3 +1,11 @@
+@admin = AdminUser.create(email: "admin@test.com",
+                           password:"foobar",
+                           password_confirmation:"foobar",
+                           first_name: "test",
+                           last_name:"mctester",
+                           phone: "5129949730")
+puts "1 Admin User created"
+
 @user = User.create(email: "email@test.com",
                     password:"foobar",
                     password_confirmation:"foobar",
@@ -6,14 +14,6 @@
                     phone: "5129949730"
                     )
 puts "1 User created"
-
-@admint = AdminUser.create(email: "admin@test.com",
-                           password:"foobar",
-                           password_confirmation:"foobar",
-                           first_name: "test",
-                           last_name:"mctester",
-                           phone: "5129949730")
-puts "1 Admin User created"
 
 100.times do |post|
   Post.create(date: Date.today, rationale: "#{post} rationale content", user_id: @user.id, overtime_request:2.5)

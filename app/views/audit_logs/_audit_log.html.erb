@@ -1,1 +1,26 @@
-<%= audit_log.user.full_name %></br>
+<tr>
+  <td>
+    <%= audit_log.id %>
+  </td>
+  <td>
+    <%= audit_log.user.full_name %>
+  </td>
+  <td>
+    <%= audit_log.start_date %>
+  </td>
+  <td>
+    <%= audit_log.end_date %>
+  </td>
+  <td>
+
+  </td>
+    <%= status_label audit_log.status %>
+
+  <td>
+    <%= link_to '', audit_log_path(audit_log), id:"edit_#{audit_log.id}", class:"fa fa-pencil index-icons"  %>
+
+  </td>
+  <td>
+    <%= link_to '', audit_log_path(audit_log), method: :delete, id:"delete_#{audit_log.id}", class:"fa fa-trash index-icons", data: { confirm: "Are you sure?"}%>
+  </td>
+</tr>

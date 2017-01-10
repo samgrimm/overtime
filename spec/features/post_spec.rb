@@ -67,13 +67,14 @@ describe 'navigate' do
     it "can be created from new form page" do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "Some rationale"
-      click_on "Save"
-      expect(page).to have_content("Some rationale")
+      fill_in 'post[overtime_request]', with: 0.2
+      expect { click_on "Save" }.to change(Post, :count).by(1)
     end
 
     it "will have an user associated with the post" do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "user_association"
+      fill_in 'post[overtime_request]', with: 0.2
       click_on "Save"
 
       expect(User.last.posts.last.rationale).to eq("user_association")

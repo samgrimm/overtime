@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def admin_types
+    ['AdminUser']
+  end
+
   def active?(path)
     "active" if current_page?(path)
   end
@@ -24,5 +28,5 @@ module ApplicationHelper
         content_tag(:td, status.titleize, class: 'table-success')
     end
   end
-  
+
 end

@@ -9,10 +9,10 @@
     </p>
     <div class="row">
       <div class="col-md-6">
-        <%= link_to 'Approve', root_path, class:"btn btn-success"%>
+        <%= link_to 'Approve', approve_post_path(pending_approval), class:"btn btn-success", id: "approve_#{pending_approval.id}"%>
       </div>
       <div class="col-md-6">
-        <%= link_to 'Review', root_path, class:"btn btn-warning"%>
+        <%= link_to 'Review', edit_post_path(pending_approval), class:"btn btn-warning"%>
       </div>
     </div>
   </div>

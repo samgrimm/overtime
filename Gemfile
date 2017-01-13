@@ -60,7 +60,9 @@ gem 'devise'
 
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem "font-awesome-rails"
-gem 'tether-rails'
+source "https://rails-assets.org" do
+  gem "rails-assets-tether"
+end
 
 gem "gritter"
 

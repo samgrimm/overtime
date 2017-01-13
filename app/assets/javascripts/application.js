@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require "tether"
 //= require gritter
 //= require jquery_ujs
 //= require cable

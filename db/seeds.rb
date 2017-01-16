@@ -6,7 +6,7 @@
                            phone: "5129949730")
 puts "1 Admin User created"
 
-@user = User.create(email: "email@test.com",
+@user = Employee.create(email: "email@test.com",
                     password:"foobar",
                     password_confirmation:"foobar",
                     first_name: "jon",

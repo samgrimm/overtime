@@ -1,6 +1,8 @@
 namespace :notification do
   desc "Sends SMS notification to employees asking them to log if they had overtime"
   task sms: :environment do
+    if Time.now.sunday?
+    end
     #1. Schedule to run on Sunday at 5pm
     #2. Iterate over all employees
     #3. Skip admin users

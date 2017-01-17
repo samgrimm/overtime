@@ -1,4 +1,4 @@
-ActionMailer::Base.stmp_settings = {
+ActionMailer::Base.smtp_settings = {
   :port => ENV['SPARKPOST_SMTP_PORT'],
   :address => ENV['SPARKPOST_SMTP_HOST'],
   :user_name => ENV['SPARKPOST_SMTP_USERNAME'],

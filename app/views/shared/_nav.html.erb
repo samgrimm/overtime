@@ -8,7 +8,7 @@
     <%= link_to "Home", root_path , class:"nav-link" %>
   </li>
   <li class="nav-item <%= active?(posts_path)%>">
-    <%= link_to "Time Entries", posts_path , class:"nav-link "%>
+    <%= link_to "Entries", posts_path , class:"nav-link "%>
   </li>
   <%= render 'shared/audit_log_tab' if policy(AuditLog).index? %>
 

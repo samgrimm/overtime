@@ -7,6 +7,8 @@ class AuditLog < ApplicationRecord
 
   after_initialize :set_defaults
 
+  scope :by_start_date, -> { order('start_date DESC') }
+
   private
 
   def set_end_date

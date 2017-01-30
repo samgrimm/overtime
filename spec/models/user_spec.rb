@@ -38,6 +38,23 @@ RSpec.describe User, type: :model do
       @user.phone = "12345678901"
       expect(@user).not_to be_valid
     end
+    it "requires a ssn" do
+      @user.ssn = nil
+      expect(@user).not_to be_valid
+    end
+    it "requires the ssn to only contain integers" do
+      @user.phone = "great"
+      expect(@user).not_to be_valid
+    end
+
+    it "requires the ssn to only have 4 chars" do
+      @user.phone = "12345"
+      expect(@user).not_to be_valid
+    end
+    it "requires a company" do
+      @user.company = nil
+      expect(@user).not_to be_valid
+    end
   end
 
 

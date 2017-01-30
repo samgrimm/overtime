@@ -3,7 +3,9 @@
                            password_confirmation:"foobar",
                            first_name: "test",
                            last_name:"mctester",
-                           phone: "5129949730")
+                           phone: "5129949730",
+                           ssn: 1234,
+                           company: "ACME")
 puts "1 Admin User created"
 
 @user = Employee.create(email: "email@test.com",
@@ -11,7 +13,9 @@ puts "1 Admin User created"
                     password_confirmation:"foobar",
                     first_name: "jon",
                     last_name:"Snow",
-                    phone: "5129949730"
+                    phone: "5129949730",
+                    ssn: 1234,
+                    company: "ACME"
                     )
 puts "1 User created"
 

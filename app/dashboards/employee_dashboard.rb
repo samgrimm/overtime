@@ -23,6 +23,8 @@ class EmployeeDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false),
     phone: Field::String.with_options(searchable: false),
+    ssn: Field::Number.with_options(searchable: true),
+    company: Field::String.with_options(searchable: false),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -32,7 +34,7 @@ class EmployeeDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :posts,
-    :id,
+    :ssn,
     :email,
   ].freeze
 
@@ -40,7 +42,8 @@ class EmployeeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :posts,
-    :id,
+    :ssn,
+    :company,
     :email,
     :phone,
     :sign_in_count,
@@ -64,6 +67,8 @@ class EmployeeDashboard < Administrate::BaseDashboard
     :first_name,
     :last_name,
     :phone,
+    :ssn,
+    :company,
     :type,
   ].freeze
 

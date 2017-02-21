@@ -1,11 +1,12 @@
 # README
 
-##This app is designed to do the following:
+##Concept
+###This app is designed to do the following:
 - Track work performed by employees
 - Allow managers to approve work and overtime
 - Message employees about reporting their hours
 
-##The following gems:
+##Gems used:
 - Devise
 - Bootstrap
 - Administrate

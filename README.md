@@ -1,8 +1,8 @@
 # README
 
 ##Concept
-###This app is designed to do the following:
-- Track work performed by employees
+###This app was designed to do the following:
+- Track work performed by employees of a company
 - Allow managers to approve work and overtime
 - Message employees about reporting their hours
 
@@ -10,6 +10,9 @@
 - Devise
 - Bootstrap
 - Administrate
+- twilio-ruby
+- gritter
+- newrelic_rpm
 - Capybara
 - RSPEC
 

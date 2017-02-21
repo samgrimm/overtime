@@ -1,15 +1,19 @@
 # README
 
-This app is designed to do the following:
-- Track overtime by employees
-- Allow managers to approve overtime
-- Message employees about overtime
+##This app is designed to do the following:
+- Track work performed by employees
+- Allow managers to approve work and overtime
+- Message employees about reporting their hours
 
-I will use the following gems:
+##The following gems:
 - Devise
 - Bootstrap
 - Administrate
 - Capybara
 - RSPEC
 
-This is built following the Jordan Hudgens Code-Along on UDEMY.
+This was built following the [Jordan Hudgens Code-Along on UDEMY](https://www.udemy.com/professional-ruby-on-rails-coding-course).
+
+The live app is deployed to heroku under https://sam-overtime.herokuapp.com/, go check it out. If you want to play around, you can log in as an user using:
+- email: email@test.com
+- password: foobar
